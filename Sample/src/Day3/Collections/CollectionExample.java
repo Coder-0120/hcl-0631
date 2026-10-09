@@ -1,8 +1,5 @@
 package Day3.Collections;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class CollectionExample {
     public static void main(String[] args) {
@@ -32,15 +29,20 @@ public class CollectionExample {
         list.remove(0); // to remove element @ particular index
         list.retainAll(Arrays.asList(10,2,3,4,5,5,6)); // it only keeps these element we specify in it
         System.out.println("size is "+ list.size());
-
-
-
-        // HashSet
-//        HashSet<Integer>set=new HashSet<>();
-//        set.add(10);
-//        set.add(10);
-//        set.add(10);
-//        System.out.println(set.size());
+        Collections.sort(list);
+        Collections.reverse(list2);
+        for(int i=0;i< list.size();i++){
+            System.out.print(list.get(i) + ",");
+        }
+        System.out.println("");
+        for(int i=0;i< list2.size();i++){
+            System.out.print(list2.get(i) + ",");
+        }
+        System.out.println();
+        System.out.println(Collections.max(list));
+        System.out.println(Collections.min(list));
+        Object[]arr=list.toArray();
+        System.out.println(arr.length);
 
 
     }

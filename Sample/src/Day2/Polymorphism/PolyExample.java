@@ -16,6 +16,7 @@ class Par{
 }
 class Par2 extends Par{
     void Method1(){
+        super.Method1(); // helps to call parent constructor..
         System.out.println("method overriding done..");
     }
 }

@@ -8,7 +8,16 @@ class Test{
     }public  double Add(double x,double y){
         return x+y;
     }
-
+}
+class Par{
+    void Method1(){
+        System.out.println("method 1 of Par class");
+    }
+}
+class Par2 extends Par{
+    void Method1(){
+        System.out.println("method overriding done..");
+    }
 }
 public class PolyExample {
     public static void main(String[] args) {
@@ -16,6 +25,10 @@ public class PolyExample {
         System.out.println(a.Add(20,30));
         System.out.println(a.Add(20,30,50));
         System.out.println(a.Add(20.334,30.332));
+
+        // override;
+        Par2 b=new Par2();
+        b.Method1();
 
     }
 }

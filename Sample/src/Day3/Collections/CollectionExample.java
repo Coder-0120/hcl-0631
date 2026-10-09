@@ -3,7 +3,7 @@ import java.util.*;
 
 public class CollectionExample {
     public static void main(String[] args) {
-        // list
+        // Arraylist
         ArrayList<Integer>list=new ArrayList<>();
         ArrayList<Integer>list2=new ArrayList<>(Arrays.asList(3,4,5,6,7,8,9,10));
         list.add(1);
@@ -43,6 +43,30 @@ public class CollectionExample {
         System.out.println(Collections.min(list));
         Object[]arr=list.toArray();
         System.out.println(arr.length);
+        System.out.println("printing using itertor");
+        Iterator<Integer>itr=list.iterator();
+
+        while (itr.hasNext()){
+            System.out.println(itr.next());
+        }
+        System.out.println(" Checking size and capacity");
+        ArrayList<Integer>tlist=new ArrayList<>(20);
+        System.out.println(tlist.size());
+        tlist.addAll(list2);
+
+        System.out.println(tlist.size());
+        // Stack
+
+        Stack<Integer>stk=new Stack<>();
+        for(int i=0;i<10;i++){
+            stk.push(i);
+        }
+        System.out.println("Stk size"+stk.size());
+        System.out.println("Stk is empty"+stk.isEmpty());
+        System.out.println("Stk peek"+stk.peek());
+        stk.pop();
+        System.out.println("Stk size after pop 1 element"+stk.size());
+
 
 
     }

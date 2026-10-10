@@ -21,6 +21,23 @@ public class PriorityQueueExample {
         while(!pq.isEmpty()){
             System.out.println(pq.poll());
         }
+        PriorityQueue<String>p=new PriorityQueue<>((a,b)->{
+            int result=Integer.compare(a.length(),b.length());
+            return result!=0?result:a.compareTo(b);
+        });
+
+        p.add("kiwi");
+        p.add("Mango");
+        p.add("Apple");
+        p.add("Banana");
+        p.add("Grapes");
+
+//        System.out.println(p.peek());
+//        System.out.println(p.poll());
+        System.out.println("-----");
+        while(!p.isEmpty()){
+            System.out.println(p.poll());
+        }
 
 
 

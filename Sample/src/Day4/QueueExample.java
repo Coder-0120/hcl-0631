@@ -16,6 +16,7 @@ public class QueueExample {
         System.out.println(q);
         System.out.println(q.peek()); //View the front element
         System.out.println(q.poll()); // Remove the front element
+
         q.remove();
         System.out.println(q);
 

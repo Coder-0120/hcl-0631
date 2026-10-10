@@ -1,6 +1,7 @@
 package Day4;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class HashMapExample {
     public static void main(String[] args) {
@@ -25,6 +26,16 @@ public class HashMapExample {
         System.out.println(map1.containsValue("Anshul"));
         map1.remove(101);
         System.out.println(map1);
+
+        LinkedHashMap<Integer,String>map3=new LinkedHashMap<>();
+        map3.put(10,"aman");
+        map3.put(2,"rahul");
+        map3.put(21,"krish");
+        map3.put(12,"rohit");
+        map3.put(5,"ansh");
+        for(int key:map3.keySet()){
+            System.out.println("key of "+key +"  is "+map3.get(key));
+        }
 
 
 

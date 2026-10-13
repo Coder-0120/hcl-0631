@@ -10,11 +10,12 @@ class Box<T>{
 }
 public class GenericExample {
     public static void main(String[] args) {
-        Box<Object>b1=new Box<>();
+        Box<Integer>b1=new Box<>();
         b1.setValue(20);
         System.out.println(b1.getValue());
-        b1.setValue("Anshul");
-        System.out.println(b1.getValue());
+        Box<String>b2=new Box<>();
+        b2.setValue("Anshul");
+        System.out.println(b2.getValue());
 
     }
 }

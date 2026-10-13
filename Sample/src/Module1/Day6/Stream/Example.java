@@ -53,6 +53,10 @@ public class Example {
                 peek(n-> System.out.println("Number is "+n)).
                 map(n->n*n).
                 forEach(System.out :: println);
+        String result=list3.stream().collect(Collectors.joining(","));
+        System.out.println(result);
+        String result2=list3.stream().collect(Collectors.joining(",","[","]")); // delimiter,prefix and suffix
+        System.out.println(result2);
 
 
 

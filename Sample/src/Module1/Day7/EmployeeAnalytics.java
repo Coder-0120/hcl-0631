@@ -59,8 +59,22 @@ public class EmployeeAnalytics {
 
         //-------------------------------Q6-----------------------------------------------------------------------------
 //        anyMatch skill "AWS"? allMatch salary > 50000? noneMatch salary > 150000?
+        boolean ans1=emps.stream().anyMatch(e->e.skills().contains("AWS"));
+        System.out.println(ans1);
 
+        boolean ans2=emps.stream().allMatch(e->e.salary().compareTo(new BigDecimal(50000))>0);
+        System.out.println(ans2);
 
+        boolean ans3=emps.stream().noneMatch(e->e.salary().compareTo(new BigDecimal(150000))>0);
+        System.out.println(ans3);
+
+        //-------------------------------Q7-----------------------------------------------------------------------------
+//        The highest-paid employee as an Optional; print the name or "none"
+        emps.stream().sorted((e1,e2)->e2.salary().compareTo(e1.salary())).
+                map(e->e.name()).limit(1).forEach(System.out::println);
+
+        //-------------------------------Q8-----------------------------------------------------------------------------
+//        Average salary per department (groupingBy + averagingDouble)
     }
 
 } 

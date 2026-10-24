@@ -1,21 +1,65 @@
 package com.example.HRMS.model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.example.HRMS.repository.EmpRepositoryImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.util.ArrayList;
 
-@Component
 public class Employee {
-    @Autowired
-    private EmpRepositoryImpl impl;
+    private long emp_id;
+    private String emp_name;
+    private String designation;
+    private String progStack;
+    private String email;
 
-    public int add(){
-        return impl.add(10,20);
+    public long getEmp_id() {
+        return emp_id;
     }
-    public double squareRoot(double d){
-        return impl.squareRoot(d);
+
+    public void setEmp_id(long emp_id) {
+        this.emp_id = emp_id;
     }
-    public int greater(int a, int b){
-        return impl.greater(a,b);
+
+    public String getEmp_name() {
+        return emp_name;
+    }
+
+    public void setEmp_name(String emp_name) {
+        this.emp_name = emp_name;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+    public String getProgStack() {
+        return progStack;
+    }
+    public void setProgStack(String progStack) {
+        this.progStack = progStack;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public Employee(long emp_id, String emp_name, String designation, String progStack, String email) {
+        this.emp_id = emp_id;
+        this.emp_name = emp_name;
+        this.designation = designation;
+        this.progStack = progStack;
+        this.email = email;
+    }
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "emp_id='" + emp_id + '\'' +
+                ", emp_name='" + emp_name + '\'' +
+                ", designation='" + designation + '\'' +
+                ", progStack='" + progStack + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

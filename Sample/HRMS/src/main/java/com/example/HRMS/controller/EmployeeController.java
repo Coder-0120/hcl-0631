@@ -1,32 +1,50 @@
 package com.example.HRMS.controller;
 
 import com.example.HRMS.model.Employee;
+import com.example.HRMS.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 
 @RestController
 public class EmployeeController {
     @Autowired
-    private Employee emp;
+    private EmployeeServiceImpl employeeService;
+
     @GetMapping("/")
-    public String Welcome(){
-        return "<h1 style='color:red'>Welcome to SpringBoot Application <h1/>";
+    public String welcome(){
+        return "Welcome to HCL HRMS";
+    }
+    @GetMapping("/addEmp")
+    public String addNewEmployee(){
+        return employeeService.addEmp();
     }
 
-    @GetMapping("/add")
-    public int Sum(){
-        System.out.println("Add method");
-        return emp.add();
+    @GetMapping("/getEmployee")
+    public ArrayList<Employee> getEmployee(){
+        return employeeService.getEmp();
     }
 
-    @GetMapping("/root")
-    public double squareRoot(){
-        return emp.squareRoot(123);
+    @GetMapping("/getById")
+    public Employee getEmployeeById(){
+        return employeeService.getEmployeeById(1);
     }
 
-    @GetMapping("/greater")
-    public int greater(){
-        return emp.greater(20,40);
+    @DeleteMapping("/deleteById")
+    public String deleteById(){
+        return employeeService.deleteById(1);
     }
+    @GetMapping("/addInBulk")
+    public ArrayList<Employee> addInBulk(){
+        return employeeService.addInBulk();
+    }
+    @PutMapping("/updateById")
+    public String updateById(){
+        return employeeService.updateById();
+    }
+
 }

@@ -3,10 +3,7 @@ package com.abes.hrmsdatabase.controller;
 import com.abes.hrmsdatabase.model.Employee;
 import com.abes.hrmsdatabase.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class EmployeeController {
@@ -19,12 +16,21 @@ public class EmployeeController {
     }
     @GetMapping("/addemp")
     public String addNewEmp(){
-
         return  employeeService.createNewEmployee();
     }
     @GetMapping("/findById/{empId}")
     public Employee getEmployeeById(@PathVariable long empId){
-        System.out.println("Employe id is "+empId);
         return employeeService.getEmployeeById(empId);
+    }
+    @DeleteMapping ("/deleteById/{empId}")
+    public String deleteEmployeeById(@PathVariable long empId){
+        return employeeService.deleteEmployeeById(empId);
+    }
+    @PutMapping("/updateById/{empId}")
+    public Employee updateEmployeeById(
+            @PathVariable long empId,
+            @RequestBody Employee updatedEmp) {
+
+        return employeeService.updateEmployeeById(empId, updatedEmp);
     }
 }

@@ -13,7 +13,10 @@ public class Employee {
 
     public Employee(){
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3521d10fc3e25470d72ee3f342e343a3b8d38813
     }
     public Employee(long emp_id, String emp_name, String stack, String designation) {
         this.emp_id = emp_id;

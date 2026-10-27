@@ -8,21 +8,21 @@ public class Employee {
     @Id
     private  long emp_id;
     private String emp_name;
+    private String email;
     private String stack;
     private  String designation;
+    private String password;
+
 
     public Employee(){
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 3521d10fc3e25470d72ee3f342e343a3b8d38813
     }
-    public Employee(long emp_id, String emp_name, String stack, String designation) {
+    public Employee(long emp_id, String emp_name, String stack, String designation,String email ,String password) {
         this.emp_id = emp_id;
         this.emp_name = emp_name;
         this.stack = stack;
         this.designation = designation;
+        this.email=email;
+        this.password=password;
     }
 
     public long getEmp_id() {
@@ -51,6 +51,22 @@ public class Employee {
 
     public String getDesignation() {
         return designation;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setDesignation(String designation) {

@@ -7,41 +7,53 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-
 @Service
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
-    public  String createNewEmployee(){
-        Employee emp1=new Employee(200L,"Anshul Verma","Java FSD","developer");
-        employeeRepository.save(emp1);
-        return "Employee is added successfully";
+
+
+    public String createNewEmployee(Employee employee){
+        employeeRepository.save(employee);
+        return " saved Successfully";
     }
-    public Employee getEmployeeById (long empId){
-        return employeeRepository.findById(empId).orElse(null);
+
+    public String getById(long id){
+        if(employeeRepository.findById(id).isEmpty())
+            return "Not Found";
+        return "User exist with: "+ id;
     }
-    public String deleteEmployeeById(long empId){
-         if(employeeRepository.findById(empId).isEmpty())
-             return "not found";
-        employeeRepository.deleteById(empId);
-        return "deleted successfully";
+    public String login(long emp_id, String email, String password){
+        Optional<Employee> optionalEmployee = employeeRepository.findById(emp_id);
+        if (optionalEmployee.isEmpty())
+            return "Employee not found with ID: " + emp_id;
+        Employee emp=optionalEmployee.get();
+        String emailid=emp.getEmail();
+        String pass=emp.getPassword();
+        if(pass.equals(password) && emailid.equals(email))
+            return "Login Successful";
+        return "Not Foufnd";
     }
-    public Employee updateEmployeeById(long empId, Employee updatedEmp) {
-        System.out.println("nbdjsujdskkd");
+    public String deleteById(long id){
+        if(employeeRepository.findById(id).isEmpty())
+            return "User Does Not Exist";
+        employeeRepository.deleteById(id);
+        return "User Deleted Successfully";
+    }
+    public String updateEmployee(long id, Employee emp) {
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+        if (optionalEmployee.isEmpty())
+            return "Employee not found with ID: " + id;
+        Employee employee=optionalEmployee.get();
+        employee.setEmp_name(emp.getEmp_name());
+        employee.setStack(emp.getStack());
+        employee.setDesignation(emp.getDesignation());
+        employee.setPassword(emp.getPassword());
+        employee.setEmail(emp.getEmail());
 
-        Optional<Employee> existing = employeeRepository.findById(empId);
+        employeeRepository.save(emp);
 
-        if (existing.isEmpty()) {
-            return null;
-        }
-
-        Employee existingEmp = existing.get();
-
-        existingEmp.setEmp_name(updatedEmp.getEmp_name());
-        existingEmp.setStack(updatedEmp.getStack());
-        existingEmp.setDesignation(updatedEmp.getDesignation());
-
-        return employeeRepository.save(existingEmp);
+        return "Employee updated successfully";
     }
 
 }

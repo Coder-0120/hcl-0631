@@ -6,31 +6,29 @@ import jakarta.persistence.Id;
 @Entity
 public class Employee {
     @Id
-    private  long emp_id;
+    private Long empId;
     private String emp_name;
     private String email;
     private String stack;
-    private  String designation;
+    private String designation;
     private String password;
-
-
     public Employee(){
     }
-    public Employee(long emp_id, String emp_name, String stack, String designation,String email ,String password) {
-        this.emp_id = emp_id;
+    public Employee(Long empId, String emp_name, String email, String stack, String designation, String password) {
+        this.empId = empId;
         this.emp_name = emp_name;
+        this.email = email;
         this.stack = stack;
         this.designation = designation;
-        this.email=email;
-        this.password=password;
+        this.password = password;
     }
 
-    public long getEmp_id() {
-        return emp_id;
+    public Long getEmpId() {
+        return empId;
     }
 
-    public void setEmp_id(long emp_id) {
-        this.emp_id = emp_id;
+    public void setEmpId(Long empId) {
+        this.empId = empId;
     }
 
     public String getEmp_name() {
@@ -39,6 +37,14 @@ public class Employee {
 
     public void setEmp_name(String emp_name) {
         this.emp_name = emp_name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getStack() {
@@ -53,12 +59,8 @@ public class Employee {
         return designation;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 
     public String getPassword() {
@@ -68,9 +70,4 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-
 }

@@ -4,10 +4,10 @@ import com.abes.hrmsdatabase.model.Employee;
 import com.abes.hrmsdatabase.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @CrossOrigin(origins="http://localhost:5173/")
 @RequestMapping("/v1/user")
-
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
@@ -21,8 +21,11 @@ public class EmployeeController {
         return employeeService.createNewEmployee(employee);
     }
     @PostMapping("/login")
-    public String login(@RequestBody Employee emp){
-        return employeeService.login(emp.getEmp_id(), emp.getEmail(), emp.getPassword());
+    public Employee login(@RequestBody Employee emp){
+//        if (emp.getEmpId() == null) {
+//            return "Employee ID is missing";
+//        }
+        return employeeService.login(emp.getEmpId(), emp.getEmail(), emp.getPassword());
     }
 
     @GetMapping("/findById/{empid}")

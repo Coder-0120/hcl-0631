@@ -1,10 +1,11 @@
-import './App.css'
-import Home from './component/Home';
-import Login from './component/Login';
-import Registration from './component/Registration';
-import Dashboard from './component/Dashboard';
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
+import Navbar from './demo_component/Navbar'
+import Home from './component/Home'
+import Dashboard from './component/Dashboard'
+import Login from './component/Login'
+import Registration from './component/Registration'
 
 
 function App() {
@@ -18,19 +19,8 @@ function App() {
 
   return (
     <>
-    {/* <Navbar/>
-      <h2>Welcome to HRMS</h2> */}
-     {/* {
-      employee.map(ele=>
-        <h3>
-        <SampleCode empdata={ele}/>
-        <br />
-        </h3>
-      )
-     } 
-     <SampleCode/> 
-      <UseFetchApi/> */}
       <BrowserRouter>
+       <Navbar/>
        <Routes>
          <Route path="/" element={<Home/>}/>
          <Route path="/login" element={<Login/>}/>

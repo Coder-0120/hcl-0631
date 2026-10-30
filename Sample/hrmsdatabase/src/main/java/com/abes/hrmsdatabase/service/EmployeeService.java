@@ -65,7 +65,7 @@ public class EmployeeService {
         employee.setPassword(emp.getPassword());
         employee.setEmail(emp.getEmail());
 
-        employeeRepository.save(emp);
+        employeeRepository.save(employee);
 
         return "Employee updated successfully";
     }

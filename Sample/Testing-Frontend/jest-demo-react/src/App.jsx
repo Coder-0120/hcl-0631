@@ -1,14 +1,5 @@
-export function greet(name) {
-    return `Hello, ${name}!`;
-}
-
 const App = () => {
-    return (
-        <div>
-            <h1>Jest Testing Practice</h1>
-            <p>{greet("World")}</p>
-        </div>
-    );
+  return <h1>Jesting in React</h1>;
 };
 
 export default App;

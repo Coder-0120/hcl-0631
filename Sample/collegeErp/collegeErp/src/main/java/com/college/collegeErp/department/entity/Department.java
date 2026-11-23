@@ -12,14 +12,14 @@ public class Department {
     private String departmentName;
     private String departmentCode;
     private String description;
-    private boolean active;
+    private Boolean active=true;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Department(){
 
     }
-    public Department(Long departmentId, String departmentName, String departmentCode, String description, boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Department(Long departmentId, String departmentName, String departmentCode, String description, Boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
         this.departmentCode = departmentCode;
@@ -61,11 +61,11 @@ public class Department {
         this.description = description;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

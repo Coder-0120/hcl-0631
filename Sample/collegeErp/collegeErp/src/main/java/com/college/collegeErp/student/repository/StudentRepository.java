@@ -32,5 +32,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
            LIKE LOWER(CONCAT('%', :name, '%'))
         """)
     List<Student> searchStudentsByName(@Param("name") String name);
+
+    boolean existsByUserUserId(Long userId);
 }
 

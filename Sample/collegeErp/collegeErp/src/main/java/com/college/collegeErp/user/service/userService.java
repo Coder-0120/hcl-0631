@@ -1,15 +1,15 @@
 package com.college.collegeErp.user.service;
 
 import com.college.collegeErp.user.entity.User;
-import com.college.collegeErp.user.repository.userRepository;
+import com.college.collegeErp.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class userService {
-    private final userRepository userRepository;
-    public userService(userRepository userRepository){
+    private final UserRepository userRepository;
+    public userService(UserRepository userRepository){
         this.userRepository=userRepository;
     }
     public User createUser(User user){
@@ -46,7 +46,7 @@ public class userService {
     public List<User> getUsersByRole(String role){
         return userRepository.getUsersByRole(role);
     }
-    public User changeUserStatus(Long id,boolean enabled){
+    public User changeUserStatus(Long id,Boolean enabled){
         User user=getUserById(id);
         if (user==null){
             return null;

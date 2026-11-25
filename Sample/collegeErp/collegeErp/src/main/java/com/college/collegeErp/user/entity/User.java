@@ -13,7 +13,7 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
-    private boolean enabled;
+    private Boolean enabled=true;
     private String role;
     private String password;
     private LocalDateTime createdAt;
@@ -22,7 +22,7 @@ public class User {
     public User(){
 
     }
-    public User(Long userId, String firstName, String lastName, String email, String phone, boolean enabled, String role, String password, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(Long userId, String firstName, String lastName, String email, String phone, Boolean enabled, String role, String password, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -75,11 +75,11 @@ public class User {
         this.phone = phone;
     }
 
-    public boolean isEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

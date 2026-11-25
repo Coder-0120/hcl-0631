@@ -45,7 +45,7 @@ public class userController {
         return userService.getUsersByRole(role);
     }
     @PatchMapping("/{id}/status")
-    public User changeUserStatus(@PathVariable Long id,@RequestBody boolean enabled){
+    public User changeUserStatus(@PathVariable Long id,@RequestBody Boolean enabled){
         return userService.changeUserStatus(id,enabled);
     }
 

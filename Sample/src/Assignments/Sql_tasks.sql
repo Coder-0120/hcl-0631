@@ -131,7 +131,11 @@ VALUES
 (19, 'Java', 86),
 (19, 'DBMS', 84),
 (19, 'Python', 88);
+
 select * from marks;
+update marks
+set score=null
+where student_id=19;
 ALTER TABLE marks
 DROP COLUMN mark_id;
 
@@ -168,3 +172,107 @@ from marks
 group by subject
 having avg(score)>60;
 
+select s.name,m.subject,m.score
+from students s
+         inner join marks m
+                    on s.student_id=m.student_id;
+
+select s.name,m.subject,m.score
+from students s
+         left join marks m
+                   on s.student_id=m.student_id;
+
+
+SELECT s.name, m.subject, m.score
+FROM students s
+         INNER JOIN marks m
+                    ON s.student_id = m.student_id
+WHERE m.score > (
+    SELECT AVG(score)
+    FROM marks
+);
+
+SELECT
+    s.student_id,
+    s.name,
+    SUM(m.score) AS total_marks,
+    RANK() OVER (ORDER BY SUM(m.score) DESC) AS student_rank
+FROM students s
+         INNER JOIN marks m
+                    ON s.student_id = m.student_id
+GROUP BY s.student_id, s.name;
+
+
+-- ----------------- TCL Tasks
+
+SET autocommit = 0;
+START TRANSACTION;
+
+UPDATE marks
+SET score = 100
+WHERE student_id = 2
+  AND subject = 'Java';
+
+SELECT *
+FROM marks
+WHERE student_id = 2;
+
+-- ROLLBACK;
+COMMIT ;
+START TRANSACTION;
+
+SELECT *
+FROM marks
+WHERE student_id = 2;
+
+SET autocommit = 0;
+
+START TRANSACTION;
+INSERT INTO students (name, email,age,hometown )
+VALUES ('Amit Sharma','amit123@gmail.com',23,'Hapur');
+
+SAVEPOINT s1;
+
+INSERT INTO students (name, email,age,hometown )
+VALUES ('Shiva Kumar','shiva123@gmail.com',24,'Meerut');
+
+SAVEPOINT s2;
+SELECT * FROM students;
+
+ROLLBACK TO SAVEPOINT s2;
+SELECT * FROM students;
+
+ROLLBACK TO SAVEPOINT s1;
+SELECT * FROM students;
+
+-- -----------------------DCL Tasks
+
+CREATE USER 'teacher1'@'localhost'
+IDENTIFIED BY 'Teacher@123';
+GRANT SELECT, INSERT, UPDATE
+      ON school_db.marks
+          TO 'teacher1'@'localhost';
+
+SHOW GRANTS FOR 'teacher1'@'localhost';
+
+REVOKE UPDATE
+    ON school_db.marks
+    FROM 'teacher1'@'localhost';
+
+SHOW GRANTS FOR 'teacher1'@'localhost';
+
+CREATE ROLE 'viewer';
+GRANT SELECT
+      ON school_db.*
+          TO 'viewer';
+
+CREATE USER 'guest1'@'localhost'
+IDENTIFIED BY 'Guest@123';
+
+GRANT 'viewer'
+TO 'guest1'@'localhost';
+
+SET DEFAULT ROLE 'viewer'
+TO 'guest1'@'localhost';
+
+SHOW GRANTS FOR 'guest1'@'localhost';
